@@ -4,6 +4,12 @@
     <list default="true" id="d9dcef34-18aa-4049-94b0-c07a0aae5eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admFacens/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/admFacens/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admFacens/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admFacens/migrations/0002_auto_20190310_1403.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admFacens/migrations/0003_competencia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admFacens/migrations/0004_habilidade.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admFacens/migrations/0005_curso.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admFacens/migrations/0006_auto_20190310_1454.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/admFacens/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/admFacens/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admFacens/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
+            <state relative-caret-position="566">
+              <caret line="175" column="56" selection-start-line="175" selection-start-column="56" selection-end-line="175" selection-end-column="56" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -29,10 +35,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admFacens/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+            <state relative-caret-position="413">
+              <caret line="125" column="50" selection-start-line="125" selection-start-column="50" selection-end-line="125" selection-end-column="50" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#140#217#0" />
+                <element signature="e#266#406#0" />
+                <element signature="e#454#531#0" />
+                <element signature="e#583#732#0" />
+                <element signature="e#779#856#0" />
+                <element signature="e#907#1053#0" />
               </folding>
             </state>
           </provider>
@@ -72,7 +84,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -88,12 +99,19 @@
             <path>
               <item name="projeto_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="projeto_web" type="462c0819:PsiDirectoryNode" />
+              <item name="admFacens" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_web" type="462c0819:PsiDirectoryNode" />
               <item name="projeto_web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,16 +209,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admFacens/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto_web/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -208,12 +216,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admFacens/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="175" column="56" selection-start-line="175" selection-start-column="56" selection-end-line="175" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admFacens/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        <state relative-caret-position="413">
+          <caret line="125" column="50" selection-start-line="125" selection-start-column="50" selection-end-line="125" selection-end-column="50" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#140#217#0" />
+            <element signature="e#266#406#0" />
+            <element signature="e#454#531#0" />
+            <element signature="e#583#732#0" />
+            <element signature="e#779#856#0" />
+            <element signature="e#907#1053#0" />
           </folding>
         </state>
       </provider>
