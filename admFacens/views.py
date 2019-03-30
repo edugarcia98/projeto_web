@@ -3,8 +3,8 @@ from django.http import HttpResponse
 
 from rest_framework import viewsets
 
-from .models import Objetivo
-from .serializers import ObjetivoSerializer
+from .models import *
+from .serializers import *
 
 # Create your views here.
 def index(request):
@@ -14,3 +14,8 @@ class ObjetivoViewSet(viewsets.ModelViewSet):
 
     serializer_class = ObjetivoSerializer
     queryset = Objetivo.objects.all()
+
+class CompetenciaViewSet(viewsets.ModelViewSet):
+
+    serializer_class = CompetenciaSerializer
+    queryset = Competencia.objects.all()

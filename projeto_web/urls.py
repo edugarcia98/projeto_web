@@ -17,12 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 
-from admFacens.views import ObjetivoViewSet
+from admFacens.views import *
 
 router = routers.DefaultRouter()
-router.register(
-    'objetivo', ObjetivoViewSet, base_name='objetivo'
-)
+router.register('objetivo', ObjetivoViewSet, base_name='objetivo')
+router.register('competencia', CompetenciaViewSet, base_name='competencia')
 
 urlpatterns = [
     path('admFacens/', include('admFacens.urls')),
