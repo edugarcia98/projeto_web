@@ -22,6 +22,8 @@ from admFacens.views import *
 router = routers.DefaultRouter()
 router.register('objetivo', ObjetivoViewSet, base_name='objetivo')
 router.register('competencia', CompetenciaViewSet, base_name='competencia')
+router.register('curso', CursoViewSet, base_name='curso')
+router.register('curso-objetivo', CursoObjetivoViewSet, base_name='curso-objetivo')
 
 urlpatterns = [
     path('admFacens/', include('admFacens.urls')),

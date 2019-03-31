@@ -120,8 +120,8 @@ class Curso(models.Model):
         ordering = ('title',)
 
 class CursoObjetivo(models.Model):
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    objetivo = models.ForeignKey(Objetivo, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, null=False, on_delete=models.CASCADE)
+    objetivo = models.ForeignKey(Objetivo, null=False, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.curso.title + " - " + self.objetivo.title
