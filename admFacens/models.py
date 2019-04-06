@@ -4,36 +4,6 @@ from django.core.exceptions import ValidationError
 
 # Create your models here.
 
-class Objetivo(models.Model):
-    title = models.CharField(max_length = 50, verbose_name = "Objetivo")
-    description = models.CharField(max_length = 1000, verbose_name = "Descricao")
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering = ('title',)
-
-class Competencia(models.Model):
-    title = models.CharField(max_length = 50, verbose_name = "Competencia")
-    description = models.CharField(max_length = 1000, verbose_name = "Descricao")
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering = ('title',)
-
-class Habilidade(models.Model):
-    title = models.CharField(max_length = 50, verbose_name = "Habilidade")
-    description = models.CharField(max_length = 1000, verbose_name = "Descricao")
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering = ('title',)
-
 class Disciplina(models.Model):
     DISC_TYPES = (
         ('T', 'Teorica'),
@@ -108,9 +78,6 @@ class Livro(models.Model):
 class Curso(models.Model):
     title = models.CharField(max_length=50, verbose_name="Curso")
     description = models.CharField(max_length=1000, verbose_name="Descricao")
-    objetivos = models.ManyToManyField(Objetivo, through='CursoObjetivo')
-    competencias = models.ManyToManyField(Competencia, through='CursoCompetencia')
-    habilidades = models.ManyToManyField(Habilidade, through='CursoHabilidade')
     disciplinas = models.ManyToManyField(Disciplina, through='CursoDisciplina')
 
     def __str__(self):
@@ -119,33 +86,42 @@ class Curso(models.Model):
     class Meta:
         ordering = ('title',)
 
-class CursoObjetivo(models.Model):
-    curso = models.ForeignKey(Curso, null=False, on_delete=models.CASCADE)
-    objetivo = models.ForeignKey(Objetivo, null=False, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.curso.title + " - " + self.objetivo.title
-
-class CursoCompetencia(models.Model):
+class Objetivo(models.Model):
+    title = models.CharField(max_length = 50, verbose_name = "Objetivo")
+    description = models.CharField(max_length = 1000, verbose_name = "Descricao")
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    competencia = models.ForeignKey(Competencia, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.curso.title + " - " + self.competencia.title
+        return self.title
 
-class CursoHabilidade(models.Model):
+    class Meta:
+        ordering = ('title',)
+
+class Competencia(models.Model):
+    title = models.CharField(max_length = 50, verbose_name = "Competencia")
+    description = models.CharField(max_length = 1000, verbose_name = "Descricao")
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    habilidade = models.ForeignKey(Habilidade, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.curso.title + " - " + self.habilidade.title
+        return self.title
+
+    class Meta:
+        ordering = ('title',)
+
+class Habilidade(models.Model):
+    title = models.CharField(max_length = 50, verbose_name = "Habilidade")
+    description = models.CharField(max_length = 1000, verbose_name = "Descricao")
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ('title',)
 
 class CursoDisciplina(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
-    objetivos = models.ManyToManyField(CursoObjetivo, blank=True)
-    competencias = models.ManyToManyField(CursoCompetencia, blank=True)
-    habilidades = models.ManyToManyField(CursoHabilidade, blank=True)
     turmas = models.ManyToManyField(Turma, through='CursoDisciplinaTurma')
     livros = models.ManyToManyField(Livro, through='CursoDisciplinaLivro')
 

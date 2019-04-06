@@ -1,7 +1,20 @@
 from rest_framework import serializers
 from .models import *
 
+class CursoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Curso
+        depth = 1
+        fields = '__all__'
+
 class ObjetivoSerializer(serializers.ModelSerializer):
+
+    curso = CursoSerializer(read_only=True)
+
+    curso_id = serializers.PrimaryKeyRelatedField(
+       queryset=Curso.objects.all(), source='curso', write_only=True
+    )
 
     class Meta:
         model = Objetivo
@@ -11,18 +24,5 @@ class CompetenciaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Competencia
-        fields = '__all__'
-
-class CursoSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Curso
-        depth = 1
-        fields = '__all__'
-
-class CursoObjetivoSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CursoObjetivo
         depth = 1
         fields = '__all__'

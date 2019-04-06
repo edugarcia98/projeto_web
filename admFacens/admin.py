@@ -6,37 +6,37 @@ from .models import *
 #Classes:
 
 class ObjetivoAdmin(admin.ModelAdmin):
-    fields = ['title', 'description']
-    list_display = ('title', 'description')
+    fields = ['title', 'description', 'curso']
+    list_display = ('title', 'description', 'curso')
 
-class ObjetivoInline(admin.TabularInline):
-    model = Curso.objetivos.through
-    extra = 1
-    verbose_name = "Objetivo"
-    verbose_name_plural = "Objetivos"
-    classes = ['collapse']
+#class ObjetivoInline(admin.TabularInline):
+#    model = Curso.objetivos.through
+#    extra = 1
+#    verbose_name = "Objetivo"
+#    verbose_name_plural = "Objetivos"
+#    classes = ['collapse']
 
 class CompetenciaAdmin(admin.ModelAdmin):
-    fields = ['title', 'description']
-    list_display = ('title', 'description')
+    fields = ['title', 'description', 'curso']
+    list_display = ('title', 'description', 'curso')
 
-class CompetenciaInline(admin.TabularInline):
-    model = Curso.competencias.through
-    extra = 1
-    verbose_name = "Competencia"
-    verbose_name_plural = "Competencias"
-    classes = ['collapse']
+#class CompetenciaInline(admin.TabularInline):
+#    model = Curso.competencias.through
+#    extra = 1
+#    verbose_name = "Competencia"
+#    verbose_name_plural = "Competencias"
+#    classes = ['collapse']
 
 class HabilidadeAdmin(admin.ModelAdmin):
-    fields = ['title', 'description']
-    list_display = ('title', 'description')
+    fields = ['title', 'description', 'curso']
+    list_display = ('title', 'description', 'curso')
 
-class HabilidadeInline(admin.TabularInline):
-    model = Curso.habilidades.through
-    extra = 1
-    verbose_name = "Habilidade"
-    verbose_name_plural = "Habilidades"
-    classes = ['collapse']
+#class HabilidadeInline(admin.TabularInline):
+#    model = Curso.habilidades.through
+#    extra = 1
+#    verbose_name = "Habilidade"
+#    verbose_name_plural = "Habilidades"
+#    classes = ['collapse']
 
 class LivroAdmin(admin.ModelAdmin):
     fields = ['title', 'autor', 'bibliografia']
@@ -56,31 +56,9 @@ class DisciplinaInline(admin.TabularInline):
 
 class CursoAdmin(admin.ModelAdmin):
     fields = ['title', 'description']
-    inlines = [ObjetivoInline, CompetenciaInline, HabilidadeInline, DisciplinaInline]
+    inlines = [DisciplinaInline]
     list_display = ['title', 'description']
 
-"""
-class CursoDisciplinaObjetivoInline(admin.TabularInline):
-    model = CursoDisciplina.objetivos.through
-    extra = 1
-    verbose_name = "Objetivo"
-    verbose_name_plural = "Objetivos"
-    classes = ['collapse']
-
-class CursoDisciplinaCompetenciaInline(admin.TabularInline):
-    model = CursoDisciplina.competencias.through
-    extra = 1
-    verbose_name = "Competencia"
-    verbose_name_plural = "Competencias"
-    classes = ['collapse']
-
-class CursoDisciplinaHabilidadeInline(admin.TabularInline):
-    model = CursoDisciplina.habilidades.through
-    extra = 1
-    verbose_name = "Habilidade"
-    verbose_name_plural = "Habilidades"
-    classes = ['collapse']
-"""
 
 class TurmaInline(admin.TabularInline):
     model = CursoDisciplina.turmas.through
@@ -112,7 +90,6 @@ class CursoDisciplinaTurmaAulaLivroInline(admin.TabularInline):
 
 class CursoDisciplinaAdmin(admin.ModelAdmin):
     fields = ['curso', 'disciplina']
-    #inlines = [CursoDisciplinaObjetivoInline, CursoDisciplinaCompetenciaInline, CursoDisciplinaHabilidadeInline]
     inlines = [TurmaInline, CursoDisciplinaLivroInline]
     list_display = ['curso', 'disciplina']
 
