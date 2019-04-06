@@ -8,6 +8,13 @@ class CursoSerializer(serializers.ModelSerializer):
         depth = 1
         fields = '__all__'
 
+class DisciplinaSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Disciplina
+        depth = 1
+        fields = '__all__'
+
 class ObjetivoSerializer(serializers.ModelSerializer):
 
     curso = CursoSerializer(read_only=True)

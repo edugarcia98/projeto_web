@@ -10,16 +10,9 @@ class Disciplina(models.Model):
         ('P', 'Pratica'),
     )
 
-    CREDITO_TYPES = (
-        (1, 2),
-        (2, 4),
-        (3, 6),
-        (4, 8),
-    )
-
     title = models.CharField(max_length=100, verbose_name="Disciplina")
     tipo = models.CharField(max_length=1, choices=DISC_TYPES, verbose_name="Tipo")
-    creditos = models.IntegerField(choices=CREDITO_TYPES, verbose_name="Creditos")
+    creditos = models.IntegerField(verbose_name="Creditos")
 
     def _get_horas_aula(self):
         return self.creditos * 20
