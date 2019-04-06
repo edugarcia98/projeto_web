@@ -20,6 +20,10 @@ class CompetenciaViewSet(viewsets.ModelViewSet):
     serializer_class = CompetenciaSerializer
     queryset = Competencia.objects.all()
 
+class HabilidadeViewSet(viewsets.ModelViewSet):
+    serializer_class = HabilidadeSerializer
+    queryset = Habilidade.objects.all()
+
 class CursoViewSet(viewsets.ModelViewSet):
 
     serializer_class = CursoSerializer

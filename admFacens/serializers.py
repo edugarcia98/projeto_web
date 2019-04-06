@@ -22,7 +22,24 @@ class ObjetivoSerializer(serializers.ModelSerializer):
 
 class CompetenciaSerializer(serializers.ModelSerializer):
 
+    curso = CursoSerializer(read_only=True)
+
+    curso_id = serializers.PrimaryKeyRelatedField(
+        queryset=Curso.objects.all(), source='curso', write_only=True
+    )
+
     class Meta:
         model = Competencia
-        depth = 1
+        fields = '__all__'
+
+class HabilidadeSerializer(serializers.ModelSerializer):
+
+    curso = CursoSerializer(read_only=True)
+
+    curso_id = serializers.PrimaryKeyRelatedField(
+        queryset=Curso.objects.all(), source='curso', write_only=True
+    )
+
+    class Meta:
+        model = Habilidade
         fields = '__all__'
