@@ -33,3 +33,18 @@ class DisciplinaViewSet(viewsets.ModelViewSet):
 
     serializer_class = DisciplinaSerializer
     queryset = Disciplina.objects.all()
+
+class TurmaViewSet(viewsets.ModelViewSet):
+
+    serializer_class = TurmaSerializer
+    queryset = Turma.objects.all()
+
+class CursoDisciplinaViewSet(viewsets.ModelViewSet):
+
+    serializer_class = CursoDisciplinaSerializer
+    queryset = CursoDisciplina.objects.all()
+
+class CursoDisciplinaTurmaViewSet(viewsets.ModelViewSet):
+
+    serializer_class = CursoDisciplinaTurmaSerializer
+    queryset = CursoDisciplinaTurma.objects.all()
