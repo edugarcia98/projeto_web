@@ -25,49 +25,6 @@ class Disciplina(models.Model):
     class Meta:
         ordering = ('title',)
 
-class Turma(models.Model):
-    codigo = models.CharField(max_length=10, verbose_name="Codigo")
-
-    def __str__(self):
-        return self.codigo
-
-    class Meta:
-        ordering = ('codigo',)
-
-class Aula(models.Model):
-    AULA_TYPES = (
-        ('T', 'Teorica'),
-        ('P', 'Pratica'),
-        ('-', 'Nenhum'),
-    )
-
-    semana = models.IntegerField(validators = [MinValueValidator(1)], verbose_name="Semana")
-    data = models.DateField(verbose_name="Data")
-    tipo = models.CharField(max_length=1, choices=AULA_TYPES, verbose_name="Tipo")
-    conteudo = models.CharField(max_length=100, verbose_name="Conteudo")
-
-    def __str__(self):
-        return self.conteudo
-
-    class Meta:
-        ordering = ('conteudo',)
-
-class Livro(models.Model):
-    LIVRO_TYPES = (
-        ('B', 'Basica'),
-        ('C', 'Complementar'),
-    )
-
-    title = models.CharField(max_length=200, verbose_name="Titulo")
-    autor = models.CharField(max_length=500, verbose_name="Autor(es)")
-    bibliografia = models.CharField(max_length=1, choices=LIVRO_TYPES, verbose_name="Bibliografia")
-
-    def __str__(self):
-        return self.title + " - " + self.autor
-
-    class Meta:
-        ordering = ('title',)
-
 class Curso(models.Model):
     title = models.CharField(max_length=50, verbose_name="Curso")
     description = models.CharField(max_length=1000, verbose_name="Descricao")
@@ -78,6 +35,13 @@ class Curso(models.Model):
 
     class Meta:
         ordering = ('title',)
+
+class CursoDisciplina(models.Model):
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.curso.title + " - " + self.disciplina.title
 
 class Objetivo(models.Model):
     title = models.CharField(max_length = 50, verbose_name = "Objetivo")
@@ -112,37 +76,67 @@ class Habilidade(models.Model):
     class Meta:
         ordering = ('title',)
 
-class CursoDisciplina(models.Model):
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
-    turmas = models.ManyToManyField(Turma, through='CursoDisciplinaTurma')
-    livros = models.ManyToManyField(Livro, through='CursoDisciplinaLivro')
+class Turma(models.Model):
+    codigo = models.CharField(max_length=10, verbose_name="Codigo")
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.curso.title + " - " + self.disciplina.title
+        return self.codigo
 
-class CursoDisciplinaTurma(models.Model):
+    class Meta:
+        ordering = ('codigo',)
+
+class Livro(models.Model):
+    LIVRO_TYPES = (
+        ('B', 'Basica'),
+        ('C', 'Complementar'),
+    )
+
+    title = models.CharField(max_length=200, verbose_name="Titulo")
+    autor = models.CharField(max_length=500, verbose_name="Autor(es)")
+    bibliografia = models.CharField(max_length=1, choices=LIVRO_TYPES, verbose_name="Bibliografia")
     cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title + " - " + self.autor
+
+    class Meta:
+        ordering = ('title',)
+
+class Aula(models.Model):
+    AULA_TYPES = (
+        ('T', 'Teorica'),
+        ('P', 'Pratica'),
+        ('-', 'Nenhum'),
+    )
+
+    semana = models.IntegerField(validators = [MinValueValidator(1)], verbose_name="Semana")
+    data = models.DateField(verbose_name="Data")
+    tipo = models.CharField(max_length=1, choices=AULA_TYPES, verbose_name="Tipo")
+    conteudo = models.CharField(max_length=100, verbose_name="Conteudo")
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
-    aulas = models.ManyToManyField(Aula, through='CursoDisciplinaTurmaAula')
 
     def __str__(self):
-        return self.turma.codigo
+        return self.conteudo
 
-class CursoDisciplinaLivro(models.Model):
-    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
-    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    class Meta:
+        ordering = ('conteudo',)
 
-    def __str__(self):
-        return str(self.cursoDisciplina) + " - " + str(self.livro)
+#class CursoDisciplinaTurma(models.Model):
+#    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+#    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+#    aulas = models.ManyToManyField(Aula, through='CursoDisciplinaTurmaAula')
+#
+#    def __str__(self):
+#        return self.turma.codigo
 
-class CursoDisciplinaTurmaAula(models.Model):
-    cursoDisciplinaTurma = models.ForeignKey(CursoDisciplinaTurma, on_delete=models.CASCADE)
-    aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
-    livros = models.ManyToManyField(CursoDisciplinaLivro)
+#class CursoDisciplinaLivro(models.Model):
+#    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+#    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+#
+#    def __str__(self):
+#        return str(self.cursoDisciplina) + " - " + str(self.livro)
 
-    def __str__(self):
-        return str(self.cursoDisciplinaTurma) + " - " + str(self.aula)
 
 
 """

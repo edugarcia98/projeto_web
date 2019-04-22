@@ -38,10 +38,6 @@ class HabilidadeAdmin(admin.ModelAdmin):
 #    verbose_name_plural = "Habilidades"
 #    classes = ['collapse']
 
-class LivroAdmin(admin.ModelAdmin):
-    fields = ['title', 'autor', 'bibliografia']
-    list_display = ['title', 'autor', 'bibliografia']
-
 class DisciplinaAdmin(admin.ModelAdmin):
     fields = ['title', 'tipo', 'creditos']
     list_display = ['title', 'tipo', 'creditos', 'horas_aula']
@@ -60,48 +56,39 @@ class CursoAdmin(admin.ModelAdmin):
     list_display = ['title', 'description']
 
 
-class TurmaInline(admin.TabularInline):
-    model = CursoDisciplina.turmas.through
-    extra = 1
-    verbose_name="Turma"
-    verbose_name_plural="Turmas"
-    classes = ['collapse']
+#class TurmaInline(admin.TabularInline):
+#    model = CursoDisciplina.turmas.through
+#    extra = 1
+#    verbose_name="Turma"
+#    verbose_name_plural="Turmas"
+#    classes = ['collapse']
 
-class AulaInline(admin.TabularInline):
-    model = CursoDisciplinaTurma.aulas.through
-    extra = 1
-    verbose_name="Aula"
-    verbose_name_plural="Aulas"
-    classes = ['collapse']
+#class AulaInline(admin.TabularInline):
+#    model = CursoDisciplinaTurma.aulas.through
+#    extra = 1
+#    verbose_name="Aula"
+#    verbose_name_plural="Aulas"
+#    classes = ['collapse']
 
-class CursoDisciplinaLivroInline(admin.TabularInline):
-    model = CursoDisciplina.livros.through
-    extra = 1
-    verbose_name="Livro"
-    verbose_name_plural="Livros"
-    classes = ['collapse']
+#class CursoDisciplinaLivroInline(admin.TabularInline):
+#    model = CursoDisciplina.livros.through
+#    extra = 1
+#    verbose_name="Livro"
+#    verbose_name_plural="Livros"
+#    classes = ['collapse']
 
-class CursoDisciplinaTurmaAulaLivroInline(admin.TabularInline):
-    model = CursoDisciplinaTurmaAula.livros.through
-    extra = 1
-    verbose_name="Livro"
-    verbose_name_plural="Livros"
-    classes = ['collapse']
+#class CursoDisciplinaTurmaAulaLivroInline(admin.TabularInline):
+#    model = CursoDisciplinaTurmaAula.livros.through
+#    extra = 1
+#    verbose_name="Livro"
+#    verbose_name_plural="Livros"
+#    classes = ['collapse']
 
 class CursoDisciplinaAdmin(admin.ModelAdmin):
     fields = ['curso', 'disciplina']
-    inlines = [TurmaInline, CursoDisciplinaLivroInline]
     list_display = ['curso', 'disciplina']
 
-class CursoDisciplinaTurmaAdmin(admin.ModelAdmin):
-    fields = ['cursoDisciplina', 'turma']
-    inlines = [AulaInline]
-    list_display = ['cursoDisciplina', 'turma']
 
-class CursoDisciplinaTurmaAulaAdmin(admin.ModelAdmin):
-    fields = ['cursoDisciplinaTurma', 'aula']
-    inlines = [CursoDisciplinaTurmaAulaLivroInline]
-    list_display = ['cursoDisciplinaTurma', 'aula']
 
 
 #Registros do Admin
@@ -112,8 +99,6 @@ admin.site.register(Habilidade, HabilidadeAdmin)
 admin.site.register(Curso, CursoAdmin)
 admin.site.register(Disciplina, DisciplinaAdmin)
 admin.site.register(CursoDisciplina, CursoDisciplinaAdmin)
-admin.site.register(CursoDisciplinaTurma, CursoDisciplinaTurmaAdmin)
-admin.site.register(CursoDisciplinaTurmaAula, CursoDisciplinaTurmaAulaAdmin)
-admin.site.register(Livro, LivroAdmin)
+admin.site.register(Livro)
 admin.site.register(Turma)
 admin.site.register(Aula)

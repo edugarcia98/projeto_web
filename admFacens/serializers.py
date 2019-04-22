@@ -51,13 +51,6 @@ class HabilidadeSerializer(serializers.ModelSerializer):
         model = Habilidade
         fields = '__all__'
 
-class TurmaSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Turma
-        depth = 1
-        fields = '__all__'
-
 class CursoDisciplinaSerializer(serializers.ModelSerializer):
 
     curso = CursoSerializer(read_only=True)
@@ -76,13 +69,31 @@ class CursoDisciplinaSerializer(serializers.ModelSerializer):
         model = CursoDisciplina
         fields = '__all__'
 
-class CursoDisciplinaTurmaSerializer(serializers.ModelSerializer):
+class TurmaSerializer(serializers.ModelSerializer):
 
     cursoDisciplina = CursoDisciplinaSerializer(read_only=True)
 
     cursoDisciplina_id = serializers.PrimaryKeyRelatedField(
-        queryset=CursoDisciplina.objects.all(), source='curso-disciplina', write_only=True
+        queryset=CursoDisciplina.objects.all(), source='cursoDisciplina', write_only=True
     )
+
+    class Meta:
+        model = Turma
+        fields = '__all__'
+
+class LivroSerializer(serializers.ModelSerializer):
+
+    cursoDisciplina = CursoDisciplinaSerializer(read_only=True)
+
+    cursoDisciplina_id = serializers.PrimaryKeyRelatedField(
+        queryset=CursoDisciplina.objects.all(), source='cursoDisciplina', write_only=True
+    )
+
+    class Meta:
+        model = Livro
+        fields = '__all__'
+
+class AulaSerializer(serializers.ModelSerializer):
 
     turma = TurmaSerializer(read_only=True)
 
@@ -91,5 +102,5 @@ class CursoDisciplinaTurmaSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        model = CursoDisciplinaTurma
+        model = Aula
         fields = '__all__'
