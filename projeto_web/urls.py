@@ -28,6 +28,7 @@ router.register('disciplina', DisciplinaViewSet, base_name='disciplina')
 router.register('curso-disciplina', CursoDisciplinaViewSet, base_name='curso-disciplina')
 router.register('turma', TurmaViewSet, base_name='turma')
 router.register('livro', LivroViewSet, base_name='livro')
+router.register('curso-disciplina-livro', CursoDisciplinaLivroViewSet, base_name='curso-disciplina-livro')
 router.register('aula', AulaViewSet, base_name='aula')
 
 urlpatterns = [

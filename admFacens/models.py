@@ -36,12 +36,36 @@ class Curso(models.Model):
     class Meta:
         ordering = ('title',)
 
+class Livro(models.Model):
+    LIVRO_TYPES = (
+        ('B', 'Basica'),
+        ('C', 'Complementar'),
+    )
+
+    title = models.CharField(max_length=200, verbose_name="Titulo")
+    autor = models.CharField(max_length=500, verbose_name="Autor(es)")
+    bibliografia = models.CharField(max_length=1, choices=LIVRO_TYPES, verbose_name="Bibliografia")
+
+    def __str__(self):
+        return self.title + " - " + self.autor
+
+    class Meta:
+        ordering = ('title',)
+
 class CursoDisciplina(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
+    livros = models.ManyToManyField(Livro, through='CursoDisciplinaLivro')
 
     def __str__(self):
         return self.curso.title + " - " + self.disciplina.title
+
+class CursoDisciplinaLivro(models.Model):
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.cursoDisciplina) + " - " + str(self.livro)
 
 class Objetivo(models.Model):
     title = models.CharField(max_length = 50, verbose_name = "Objetivo")
@@ -85,23 +109,6 @@ class Turma(models.Model):
 
     class Meta:
         ordering = ('codigo',)
-
-class Livro(models.Model):
-    LIVRO_TYPES = (
-        ('B', 'Basica'),
-        ('C', 'Complementar'),
-    )
-
-    title = models.CharField(max_length=200, verbose_name="Titulo")
-    autor = models.CharField(max_length=500, verbose_name="Autor(es)")
-    bibliografia = models.CharField(max_length=1, choices=LIVRO_TYPES, verbose_name="Bibliografia")
-    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.title + " - " + self.autor
-
-    class Meta:
-        ordering = ('title',)
 
 class Aula(models.Model):
     AULA_TYPES = (
