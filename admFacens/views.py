@@ -44,10 +44,35 @@ class CursoDisciplinaLivroViewSet(viewsets.ModelViewSet):
     serializer_class = CursoDisciplinaLivroSerializer
     queryset = CursoDisciplinaLivro.objects.all()
 
+class CursoDisciplinaObjetivoViewSet(viewsets.ModelViewSet):
+
+    serializer_class = CursoDisciplinaObjetivoSerializer
+    queryset = CursoDisciplinaObjetivo.objects.all()
+
+class CursoDisciplinaCompetenciaViewSet(viewsets.ModelViewSet):
+
+    serializer_class = CursoDisciplinaCompetenciaSerializer
+    queryset = CursoDisciplinaCompetencia.objects.all()
+
+class CursoDisciplinaHabilidadeViewSet(viewsets.ModelViewSet):
+
+    serializer_class = CursoDisciplinaHabilidadeSerializer
+    queryset = CursoDisciplinaHabilidade.objects.all()
+
 class TurmaViewSet(viewsets.ModelViewSet):
 
     serializer_class = TurmaSerializer
     queryset = Turma.objects.all()
+
+class ConteudoViewSet(viewsets.ModelViewSet):
+
+    serializer_class = ConteudoSerializer
+    queryset = Conteudo.objects.all()
+
+class MetodologiaEnsinoViewSet(viewsets.ModelViewSet):
+
+    serializer_class = MetodologiaEnsinoSerializer
+    queryset = MetodologiaEnsino.objects.all()
 
 class LivroViewSet(viewsets.ModelViewSet):
 

@@ -39,8 +39,8 @@ class HabilidadeAdmin(admin.ModelAdmin):
 #    classes = ['collapse']
 
 class DisciplinaAdmin(admin.ModelAdmin):
-    fields = ['title', 'tipo', 'creditos']
-    list_display = ['title', 'tipo', 'creditos', 'horas_aula']
+    fields = ['title', 'tipo', 'creditos', 'ementa']
+    list_display = ['title', 'tipo', 'creditos', 'horas_aula', 'ementa']
 
 class DisciplinaInline(admin.TabularInline):
     model = Curso.disciplinas.through
@@ -101,5 +101,10 @@ admin.site.register(Disciplina, DisciplinaAdmin)
 admin.site.register(CursoDisciplina, CursoDisciplinaAdmin)
 admin.site.register(Livro)
 admin.site.register(Turma)
+admin.site.register(Conteudo)
+admin.site.register(MetodologiaEnsino)
 admin.site.register(Aula)
 admin.site.register(CursoDisciplinaLivro)
+admin.site.register(CursoDisciplinaObjetivo)
+admin.site.register(CursoDisciplinaCompetencia)
+admin.site.register(CursoDisciplinaHabilidade)

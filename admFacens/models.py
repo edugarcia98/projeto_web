@@ -13,6 +13,7 @@ class Disciplina(models.Model):
     title = models.CharField(max_length=100, verbose_name="Disciplina")
     tipo = models.CharField(max_length=1, choices=DISC_TYPES, verbose_name="Tipo")
     creditos = models.IntegerField(verbose_name="Creditos")
+    ementa = models.CharField(max_length=1000, verbose_name="Ementa", null=True)
 
     def _get_horas_aula(self):
         return self.creditos * 20
@@ -52,21 +53,6 @@ class Livro(models.Model):
     class Meta:
         ordering = ('title',)
 
-class CursoDisciplina(models.Model):
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
-    livros = models.ManyToManyField(Livro, through='CursoDisciplinaLivro')
-
-    def __str__(self):
-        return self.curso.title + " - " + self.disciplina.title
-
-class CursoDisciplinaLivro(models.Model):
-    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
-    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.cursoDisciplina) + " - " + str(self.livro)
-
 class Objetivo(models.Model):
     title = models.CharField(max_length = 50, verbose_name = "Objetivo")
     description = models.CharField(max_length = 1000, verbose_name = "Descricao")
@@ -100,6 +86,17 @@ class Habilidade(models.Model):
     class Meta:
         ordering = ('title',)
 
+class CursoDisciplina(models.Model):
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
+    objetivos = models.ManyToManyField(Objetivo, through='CursoDisciplinaObjetivo')
+    competencias = models.ManyToManyField(Competencia, through='CursoDisciplinaCompetencia')
+    habilidades = models.ManyToManyField(Habilidade, through='CursoDisciplinaHabilidade')
+    livros = models.ManyToManyField(Livro, through='CursoDisciplinaLivro')
+
+    def __str__(self):
+        return self.curso.title + " - " + self.disciplina.title
+
 class Turma(models.Model):
     codigo = models.CharField(max_length=10, verbose_name="Codigo")
     cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
@@ -109,6 +106,56 @@ class Turma(models.Model):
 
     class Meta:
         ordering = ('codigo',)
+
+class CursoDisciplinaLivro(models.Model):
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.cursoDisciplina) + " - " + str(self.livro)
+
+class CursoDisciplinaObjetivo(models.Model):
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+    objetivo = models.ForeignKey(Objetivo, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.cursoDisciplina) + " - " + str(self.objetivo)
+
+class CursoDisciplinaCompetencia(models.Model):
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+    competencia = models.ForeignKey(Competencia, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.cursoDisciplina) + " - " + str(self.competencia)
+
+class CursoDisciplinaHabilidade(models.Model):
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+    habilidade = models.ForeignKey(Habilidade, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.cursoDisciplina) + " - " + str(self.habilidade)
+
+class Conteudo(models.Model):
+    title = models.CharField(max_length=30, verbose_name="Conteudo")
+    modulo = models.CharField(max_length=1, verbose_name="Modulo")
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ('title',)
+
+class MetodologiaEnsino(models.Model):
+    description = models.CharField(max_length=1000, verbose_name="Metodologia de Ensino")
+    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.description
+
+    class Meta:
+        ordering = ('description',)
+
 
 class Aula(models.Model):
     AULA_TYPES = (
