@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d9dcef34-18aa-4049-94b0-c07a0aae5eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admFacens/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/admFacens/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admFacens/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/admFacens/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admFacens/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/admFacens/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admFacens/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/admFacens/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto_web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/projeto_web/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admFacens/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="79" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+              <caret line="102" column="82" selection-start-line="102" selection-start-column="82" selection-end-line="102" selection-end-column="82" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -32,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admFacens/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
+            <state relative-caret-position="3213">
               <caret line="190" column="25" selection-start-line="190" selection-start-column="25" selection-end-line="190" selection-end-column="25" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
@@ -44,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admFacens/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="1156">
               <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -56,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto_web/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
+            <state relative-caret-position="442">
               <caret line="30" column="93" selection-start-line="30" selection-start-column="93" selection-end-line="30" selection-end-column="93" />
               <folding>
                 <element signature="e#635#667#0" expanded="true" />
@@ -65,10 +61,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admFacens/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
+            <state relative-caret-position="697">
               <caret line="42" column="70" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="70" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -105,8 +101,8 @@
         <option value="$PROJECT_DIR$/admFacens/serializers.py" />
         <option value="$PROJECT_DIR$/admFacens/views.py" />
         <option value="$PROJECT_DIR$/projeto_web/urls.py" />
-        <option value="$PROJECT_DIR$/admFacens/models.py" />
         <option value="$PROJECT_DIR$/admFacens/admin.py" />
+        <option value="$PROJECT_DIR$/admFacens/models.py" />
       </list>
     </option>
   </component>
@@ -183,6 +179,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24880762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -234,9 +231,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admFacens/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="102" column="82" selection-start-line="102" selection-start-column="82" selection-end-line="102" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admFacens/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
+        <state relative-caret-position="3213">
           <caret line="190" column="25" selection-start-line="190" selection-start-column="25" selection-end-line="190" selection-end-column="25" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
@@ -246,7 +253,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admFacens/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
+        <state relative-caret-position="1156">
           <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -256,7 +263,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto_web/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="442">
           <caret line="30" column="93" selection-start-line="30" selection-start-column="93" selection-end-line="30" selection-end-column="93" />
           <folding>
             <element signature="e#635#667#0" expanded="true" />
@@ -264,19 +271,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admFacens/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="79" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admFacens/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
+        <state relative-caret-position="697">
           <caret line="42" column="70" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="70" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />

@@ -99,6 +99,8 @@ class CursoDisciplina(models.Model):
 
 class Turma(models.Model):
     codigo = models.CharField(max_length=10, verbose_name="Codigo")
+    semestre = models.CharField(max_length=10, verbose_name="Semestre", null=True)
+    recursos = models.CharField(max_length=200, verbose_name="Recursos", null=True)
     cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
 
     def __str__(self):
