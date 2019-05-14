@@ -35,6 +35,7 @@ router.register('curso-disciplina-objetivo', CursoDisciplinaObjetivoViewSet, bas
 router.register('curso-disciplina-competencia', CursoDisciplinaCompetenciaViewSet, base_name='curso-disciplina-competencia')
 router.register('curso-disciplina-habilidade', CursoDisciplinaHabilidadeViewSet, base_name='curso-disciplina-habilidade')
 router.register('aula', AulaViewSet, base_name='aula')
+router.register('register', RegisterViewSet, base_name='register')
 
 urlpatterns = [
     path('admFacens/', include('admFacens.urls')),

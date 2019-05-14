@@ -178,6 +178,17 @@ class Aula(models.Model):
     class Meta:
         ordering = ('conteudo',)
 
+class Register(models.Model):
+    usuario = models.CharField(max_length = 50, verbose_name = "Usuario")
+    password = models.CharField(max_length = 50, verbose_name = "Password")
+    email = models.CharField(max_length = 50, verbose_name = "Email")
+
+    def __str__(self):
+        return self.usuario
+
+    class Meta:
+        ordering = ('usuario',)
+
 #class CursoDisciplinaTurma(models.Model):
 #    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)
 #    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)

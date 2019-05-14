@@ -83,3 +83,8 @@ class AulaViewSet(viewsets.ModelViewSet):
 
     serializer_class = AulaSerializer
     queryset = Aula.objects.all()
+
+class RegisterViewSet(viewsets.ModelViewSet):
+
+    serializer_class = RegisterSerializer
+    queryset = Register.objects.all()
