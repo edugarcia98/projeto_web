@@ -179,9 +179,16 @@ class Aula(models.Model):
         ordering = ('conteudo',)
 
 class Register(models.Model):
+    USER_TYPES =(
+        ('A', 'Administrador'),
+        ('C', 'Coordenador'),
+        ('P', 'Professor')
+    )
+
     usuario = models.CharField(max_length = 50, verbose_name = "Usuario")
     password = models.CharField(max_length = 50, verbose_name = "Password")
     email = models.CharField(max_length = 50, verbose_name = "Email")
+    tipo = models.CharField(max_length=1, choices=USER_TYPES, verbose_name="Tipo")
 
     def __str__(self):
         return self.usuario
