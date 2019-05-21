@@ -4,6 +4,24 @@ from django.core.exceptions import ValidationError
 
 # Create your models here.
 
+class Register(models.Model):
+    USER_TYPES =(
+        ('A', 'Administrador'),
+        ('C', 'Coordenador'),
+        ('P', 'Professor')
+    )
+
+    usuario = models.CharField(max_length = 50, verbose_name = "Usuario")
+    password = models.CharField(max_length = 50, verbose_name = "Password")
+    email = models.CharField(max_length = 50, verbose_name = "Email")
+    tipo = models.CharField(max_length=1, choices=USER_TYPES, verbose_name="Tipo")
+
+    def __str__(self):
+        return self.usuario
+
+    class Meta:
+        ordering = ('usuario',)
+
 class Disciplina(models.Model):
     DISC_TYPES = (
         ('T', 'Teorica'),
@@ -14,6 +32,7 @@ class Disciplina(models.Model):
     tipo = models.CharField(max_length=1, choices=DISC_TYPES, verbose_name="Tipo")
     creditos = models.IntegerField(verbose_name="Creditos")
     ementa = models.CharField(max_length=1000, verbose_name="Ementa", null=True)
+    professor = models.ForeignKey(Register, on_delete=models.CASCADE)
 
     def _get_horas_aula(self):
         return self.creditos * 20
@@ -30,6 +49,7 @@ class Curso(models.Model):
     title = models.CharField(max_length=50, verbose_name="Curso")
     description = models.CharField(max_length=1000, verbose_name="Descricao")
     disciplinas = models.ManyToManyField(Disciplina, through='CursoDisciplina')
+    coordenador = models.ForeignKey(Register, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -177,24 +197,6 @@ class Aula(models.Model):
 
     class Meta:
         ordering = ('conteudo',)
-
-class Register(models.Model):
-    USER_TYPES =(
-        ('A', 'Administrador'),
-        ('C', 'Coordenador'),
-        ('P', 'Professor')
-    )
-
-    usuario = models.CharField(max_length = 50, verbose_name = "Usuario")
-    password = models.CharField(max_length = 50, verbose_name = "Password")
-    email = models.CharField(max_length = 50, verbose_name = "Email")
-    tipo = models.CharField(max_length=1, choices=USER_TYPES, verbose_name="Tipo")
-
-    def __str__(self):
-        return self.usuario
-
-    class Meta:
-        ordering = ('usuario',)
 
 #class CursoDisciplinaTurma(models.Model):
 #    cursoDisciplina = models.ForeignKey(CursoDisciplina, on_delete=models.CASCADE)

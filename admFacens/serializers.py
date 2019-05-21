@@ -1,7 +1,19 @@
 from rest_framework import serializers
 from .models import *
 
+class RegisterSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Register
+        fields = '__all__'
+
 class CursoSerializer(serializers.ModelSerializer):
+
+    coordenador = RegisterSerializer(read_only=True)
+
+    coordenador_id = serializers.PrimaryKeyRelatedField(
+        queryset=Register.objects.all(), source='coordenador', write_only=True
+    )
 
     class Meta:
         model = Curso
@@ -9,6 +21,12 @@ class CursoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class DisciplinaSerializer(serializers.ModelSerializer):
+
+    professor = RegisterSerializer(read_only=True)
+
+    professor_id = serializers.PrimaryKeyRelatedField(
+        queryset=Register.objects.all(), source='professor', write_only=True
+    )
 
     class Meta:
         model = Disciplina
@@ -200,10 +218,4 @@ class AulaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aula
-        fields = '__all__'
-
-class RegisterSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Register
         fields = '__all__'
