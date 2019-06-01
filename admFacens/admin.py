@@ -38,9 +38,9 @@ class HabilidadeAdmin(admin.ModelAdmin):
 #    verbose_name_plural = "Habilidades"
 #    classes = ['collapse']
 
-class DisciplinaAdmin(admin.ModelAdmin):
-    fields = ['title', 'tipo', 'creditos', 'ementa']
-    list_display = ['title', 'tipo', 'creditos', 'horas_aula', 'ementa']
+#class DisciplinaAdmin(admin.ModelAdmin):
+#    fields = ['title', 'tipo', 'creditos', 'ementa']
+#    list_display = ['title', 'tipo', 'creditos', 'horas_aula', 'ementa']
 
 class DisciplinaInline(admin.TabularInline):
     model = Curso.disciplinas.through
@@ -50,10 +50,10 @@ class DisciplinaInline(admin.TabularInline):
     verbose_name_plural = "Disciplinas"
     classes = ['collapse']
 
-class CursoAdmin(admin.ModelAdmin):
-    fields = ['title', 'description']
-    inlines = [DisciplinaInline]
-    list_display = ['title', 'description']
+#class CursoAdmin(admin.ModelAdmin):
+#    fields = ['title', 'description']
+#    inlines = [DisciplinaInline]
+#    list_display = ['title', 'description']
 
 
 #class TurmaInline(admin.TabularInline):
@@ -97,8 +97,8 @@ admin.site.register(Objetivo, ObjetivoAdmin)
 admin.site.register(Competencia, CompetenciaAdmin)
 admin.site.register(Habilidade, HabilidadeAdmin)
 admin.site.register(Curso, CursoAdmin)
-admin.site.register(Disciplina, DisciplinaAdmin)
-admin.site.register(CursoDisciplina, CursoDisciplinaAdmin)
+admin.site.register(Disciplina)
+admin.site.register(CursoDisciplina)
 admin.site.register(Livro)
 admin.site.register(Turma)
 admin.site.register(Conteudo)
