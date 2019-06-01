@@ -109,3 +109,4 @@ admin.site.register(CursoDisciplinaObjetivo)
 admin.site.register(CursoDisciplinaCompetencia)
 admin.site.register(CursoDisciplinaHabilidade)
 admin.site.register(Register)
+#Teste
