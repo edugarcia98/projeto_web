@@ -55,6 +55,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:4200',
+    'admfacens-front.herokuapp.com',
 )
 
 ROOT_URLCONF = 'projeto_web.urls'
